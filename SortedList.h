@@ -55,6 +55,7 @@ public:
   //	     
   // Post: Current position is updated to next position.
   //       item is a copy of element at current position.
+  void ~SortedList();
 
 private:
   struct NodeT {
