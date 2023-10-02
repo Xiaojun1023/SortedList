@@ -4,7 +4,9 @@
 
 template<class T>
 SortedList<T>::SortedList() {
-
+    head = nullptr;
+    curriterpos = nullptr;
+    length = 0;
 }
 
 template<class T>
@@ -28,7 +30,17 @@ void SortedList<T>::MakeEmpty() {
 
 template<class T>
 bool SortedList<T>::IsFull() const {
-    return false;
+    
+    try
+    {
+        NodeT* temp = new NodeT();
+        delete temp;
+        return false;
+    }
+    catch (...)
+    {
+        return true;
+    }
 }
 
 template<class T>
@@ -135,7 +147,9 @@ void SortedList<T>::DeleteItem(T item) {
 }
 
 template<class T>
-void SortedList<T>::ResetIterator() {
+void SortedList<T>::ResetIterator()
+{
+    curriterpos = nullptr;
 
 }
 
@@ -145,6 +159,12 @@ int SortedList<T>::GetNextItem() {
         throw "Out of bounds";
     }
 
-    return T();
+    if (curriterpos != nullptr)
+    {
+        curriterpos = head;
+    }
+
+    T retrunvalue = curriterpos->value;
+    curriterpos = curriterpos->next;
 }
 
