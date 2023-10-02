@@ -159,7 +159,7 @@ int SortedList<T>::GetNextItem() {
         throw "Out of bounds";
     }
 
-    if (curriterpos != nullptr)
+    if (curriterpos == nullptr)
     {
         curriterpos = head;
     }
